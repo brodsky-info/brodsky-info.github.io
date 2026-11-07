@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Почему лимиты Claude сгорают за час</title>
+<meta name="description" content="Где на самом деле утекают лимиты в Claude Code и одна настройка, которая отдаёт поиск по файлам дешёвой модели Haiku.">
+<meta property="og:title" content="Почему лимиты Claude сгорают за час">
+<meta property="og:description" content="Одна настройка: поиск по файлам — на Haiku, код — на Opus.">
+<meta property="og:image" content="https://brodsky-info.github.io/agent/img/cover.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;600;800&family=Unbounded:wght@800;900&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1d1a17;--cream:#fff4ea;--paper:#fffaf4;--mute:#7d746a;--org:#d97757;--line:#e6d9ca;
+  --l1:#5aa9ff;--l2:#4ec27a;--l3:#f5c84b;--l4:#b18cff;--l5:#ff9b6b;--l6:#7ee0d0;--l7:#ff5a5a}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--cream);color:var(--ink);font:400 18px/1.55 Onest,-apple-system,system-ui,sans-serif;
+  background-image:radial-gradient(rgba(29,26,23,.07) 2px,transparent 2px);background-size:34px 34px}
+main{max-width:680px;margin:0 auto;padding:28px 16px 64px}
+.brand{font:800 14px/1 Onest,sans-serif;letter-spacing:.12em;color:var(--mute);text-transform:uppercase}
+h1{font:900 clamp(34px,8.5vw,52px)/1.05 Unbounded,sans-serif;margin:14px 0 14px;letter-spacing:-.01em}
+h1 em{font-style:normal;color:var(--org)}
+.lead{font-size:20px;margin:0 0 22px}
+.ladder{display:flex;gap:6px;margin:0 0 26px}
+.ladder i{flex:1;height:14px;border-radius:7px;border:3px solid var(--ink)}
+.card{background:var(--paper);border:4px solid var(--ink);border-radius:26px;box-shadow:7px 7px 0 var(--ink);overflow:hidden;margin:0 0 30px}
+.card img{display:block;width:100%;height:auto;border-bottom:4px solid var(--ink);background:#f3e9de}
+.body{padding:20px 20px 22px}
+.need{padding:20px}
+.need h2,.lvl h2{font:900 26px/1.15 Unbounded,sans-serif;margin:0 0 10px}
+.need p{margin:0 0 10px}.need p:last-child{margin:0}
+.tag{display:inline-block;font:900 15px/1 Unbounded,sans-serif;padding:7px 12px;border:3px solid var(--ink);border-radius:12px;margin:0 0 12px;color:var(--ink)}
+.lvl p{margin:0 0 12px}
+.ex{color:var(--mute);font-size:16px}
+.how{font:800 13px/1 Onest,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin:16px 0 8px}
+.prompt{position:relative;background:#fff;border:3px solid var(--ink);border-radius:16px;padding:14px 14px 14px 16px;font-size:17px;line-height:1.45}
+.prompt q{quotes:none}
+.copy{display:block;width:100%;margin-top:12px;padding:12px;border:3px solid var(--ink);border-radius:12px;background:var(--org);color:#fff;font:800 16px/1 Onest,sans-serif;cursor:pointer;box-shadow:4px 4px 0 var(--ink)}
+.copy:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.copy.ok{background:var(--l2)}
+.note{font-size:15px;color:var(--mute);margin:12px 0 0}
+code{font:600 15px/1.4 ui-monospace,Menlo,monospace;background:#f3e9de;border-radius:6px;padding:1px 6px;word-break:break-all}
+.end{text-align:center;padding:22px 20px}
+.end h2{font:900 24px/1.2 Unbounded,sans-serif;margin:0 0 10px}
+.btn{display:inline-block;margin-top:6px;padding:14px 22px;border:3px solid var(--ink);border-radius:14px;background:var(--ink);color:#fff;text-decoration:none;font:800 17px/1 Onest,sans-serif}
+footer{text-align:center;color:var(--mute);font-size:14px}
+footer a{color:var(--mute)}
+</style>
+</head>
+<body>
+<main>
+  <div class="brand">BRODSKY.INFO · инструкция</div>
+  <h1>Почему лимиты Claude сгорают <em>за&nbsp;час</em></h1>
+  <p class="lead">Дело не в том, что ты много пишешь. Чаще всего лимиты съедает поиск по файлам, который Claude Code запускает сам. Ниже — где это происходит и одна настройка, которая это чинит.</p>
+
+  <article class="card lvl">
+    <img src="img/cover.webp" width="720" height="747" alt="Лимит Claude исчерпан, сброс через 5 часов">
+    <div class="body"><p>Знакомо: сел поработать, а через час «лимит исчерпан, сброс через 5 часов». Разберёмся, куда он ушёл.</p></div>
+  </article>
+
+  <section class="card need">
+    <h2>Что понадобится</h2>
+    <p><b>Claude Code</b> — версия Claude, которая работает с файлами и программами на твоём компьютере. Нужна подписка Claude Pro или выше. В обычном чате Claude этой настройки нет.</p>
+    <p><b>Доступ из России.</b> Claude официально не работает в России. Если он у тебя не открывается, подключи BrodSky: сервис, через который Claude открывается и работает из России. 👉 <a href="https://t.me/Brodsky_vpn_bot">@Brodsky_vpn_bot</a></p>
+  </section>
+
+  <article class="card lvl">
+    <img src="img/models.webp" width="720" height="747" alt="Три модели Claude: Opus, Sonnet, Haiku" loading="lazy">
+    <div class="body">
+      <span class="tag" style="background:var(--l5)">ТРИ МОДЕЛИ</span>
+      <h2>Гений, середнячок и стажёр</h2>
+      <p><b>Opus</b> — самый умный и самый дорогой. <b>Sonnet</b> — крепкий середнячок. <b>Haiku</b> — быстрый и дешёвый.</p>
+      <p>Чем умнее модель, тем быстрее она тратит лимит. Поэтому важно, чтобы каждая работа доставалась нужной модели.</p>
+    </div>
+  </article>
+
+  <article class="card lvl">
+    <img src="img/advice.webp" width="720" height="747" alt="Совет из рилсов: не давай Опусу писать код" loading="lazy">
+    <div class="body">
+      <span class="tag" style="background:var(--l7)">ВРЕДНЫЙ СОВЕТ</span>
+      <h2>«Не давай Опусу писать код»</h2>
+      <p>Так советуют в рилсах. Это вредный совет: код — как раз та работа, где умная модель окупается. Отдашь код дешёвой модели — сэкономишь копейки, а ошибки будешь искать часами.</p>
+    </div>
+  </article>
+
+  <article class="card lvl">
+    <img src="img/leak.webp" width="720" height="747" alt="Opus сам ищет файлы по папкам" loading="lazy">
+    <div class="body">
+      <span class="tag" style="background:var(--l3)">ГДЕ УТЕКАЕТ</span>
+      <h2>Гений бегает за бумажками</h2>
+      <p>Когда Claude Code ищет нужные файлы, он запускает помощника-поисковика. Многие думают, что поиск всегда делает дешёвый Haiku. Но по документации Claude Code встроенный поисковик работает <b>на той же модели, что и основной чат</b>. Сидишь в Opus — и бегать по папкам тоже будет Opus.</p>
+      <p class="ex">Поиск — работа частая и объёмная: прочитать десятки файлов, чтобы найти пару нужных строк. На дорогой модели это и сжигает лимит.</p>
+    </div>
+  </article>
+
+  <article class="card lvl">
+    <img src="img/fix.webp" width="720" height="747" alt="Настройка агента поиска: model: haiku" loading="lazy">
+    <div class="body">
+      <span class="tag" style="background:var(--l2)">НАСТРОЙКА</span>
+      <h2>Поиск — стажёру, код — гению</h2>
+      <p>Нужно создать своего помощника-поисковика с именем <b>Explore</b> и моделью <b>haiku</b>. Claude Code увидит его и будет использовать вместо встроенного. Проще всего попросить об этом самого Claude:</p>
+      <div class="how">Скопируй и отправь в Claude Code</div>
+      <div class="prompt"><q>Создай файл ~/.claude/agents/Explore.md — своего агента Explore, который заменит встроенный поиск. В шапке укажи name: Explore, model: haiku, инструменты только для чтения (Read, Grep, Glob, Bash) и запрет на Write и Edit. Задача агента — искать файлы и коротко отвечать, что нашёл, с путями. Потом скажи, нужно ли перезапустить Claude Code.</q></div>
+      <button class="copy">Скопировать фразу</button>
+      <p class="note">Если папки <code>~/.claude/agents</code> раньше не было, перезапусти Claude Code, чтобы он увидел нового агента. Проверить можно командой <code>/agents</code>: там должен быть Explore с моделью haiku.</p>
+    </div>
+  </article>
+
+  <article class="card lvl">
+    <img src="img/result.webp" width="720" height="747" alt="Opus пишет код, Haiku ищет файлы" loading="lazy">
+    <div class="body">
+      <span class="tag" style="background:var(--l1)">РЕЗУЛЬТАТ</span>
+      <h2>Гений снова за работой</h2>
+      <p>Теперь по папкам бегает быстрый и дешёвый Haiku, а Opus тратит лимит только на то, что умеет лучше всех — код и сложные решения.</p>
+      <p class="note">Если поиск начнёт промахиваться, поменяй в файле <code>model: haiku</code> на <code>model: sonnet</code>. Чтобы вернуть всё как было, просто удали файл <code>Explore.md</code>.</p>
+    </div>
+  </article>
+
+  <section class="card end">
+    <h2>Лимиты больше не горят?</h2>
+    <p>Перешли эту страницу тому, кто жалуется на лимиты Claude.</p>
+    <a class="btn" href="https://t.me/BrodskyINFO">Канал @BrodskyINFO</a>
+  </section>
+
+  <footer>BRODSKY.INFO · <a href="https://t.me/BrodskyINFO">t.me/BrodskyINFO</a> · источник: <a href="https://code.claude.com/docs/en/sub-agents">документация Claude Code</a></footer>
+</main>
+<script>
+document.querySelectorAll('.copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var q = b.previousElementSibling.textContent.trim();
+    var done = function () { b.textContent = 'Скопировано ✓'; b.classList.add('ok'); setTimeout(function () { b.textContent = 'Скопировать фразу'; b.classList.remove('ok'); }, 1800); };
+    if (navigator.clipboard) navigator.clipboard.writeText(q).then(done, function () { fallback(q); done(); });
+    else { fallback(q); done(); }
+  });
+});
+function fallback(text) {
+  var t = document.createElement('textarea'); t.value = text; t.style.position = 'fixed'; t.style.opacity = '0';
+  document.body.appendChild(t); t.select(); try { document.execCommand('copy'); } catch (e) {} document.body.removeChild(t);
+}
+</script>
+</body>
+</html>
