@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Claude смотрит видео за тебя: скилл Watch</title>
+<meta name="description" content="Бесплатный скилл Watch: Claude видит кадры, слышит звук и разбирает созвоны, вебинары и ролики. Установка и готовые фразы.">
+<meta property="og:title" content="Claude смотрит видео за тебя: скилл Watch">
+<meta property="og:description" content="Бесплатный скилл Watch: Claude видит кадры, слышит звук и разбирает созвоны, вебинары и ролики. Установка и готовые фразы.">
+<meta property="og:image" content="https://brodsky-info.github.io/glaza/video.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;600;800&family=Unbounded:wght@800;900&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1d1a17;--cream:#fff4ea;--paper:#fffaf4;--mute:#7d746a;--org:#d97757;--line:#e6d9ca;
+  --l1:#5aa9ff;--l2:#4ec27a;--l3:#f5c84b;--l4:#b18cff;--l5:#ff9b6b;--l6:#7ee0d0;--l7:#ff5a5a}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--cream);color:var(--ink);font:400 18px/1.55 Onest,-apple-system,system-ui,sans-serif;
+  background-image:radial-gradient(rgba(29,26,23,.07) 2px,transparent 2px);background-size:34px 34px}
+main{max-width:680px;margin:0 auto;padding:28px 16px 64px}
+.brand{font:800 14px/1 Onest,sans-serif;letter-spacing:.12em;color:var(--mute);text-transform:uppercase}
+h1{font:900 clamp(34px,8.5vw,52px)/1.05 Unbounded,sans-serif;margin:14px 0 14px;letter-spacing:-.01em}
+h1 em{font-style:normal;color:var(--org)}
+.lead{font-size:20px;margin:0 0 22px}
+.ladder{display:flex;gap:6px;margin:0 0 26px}
+.ladder i{flex:1;height:14px;border-radius:7px;border:3px solid var(--ink)}
+.card{background:var(--paper);border:4px solid var(--ink);border-radius:26px;box-shadow:7px 7px 0 var(--ink);overflow:hidden;margin:0 0 30px}
+.card img{display:block;width:100%;height:auto;border-bottom:4px solid var(--ink);background:#f3e9de}
+.body{padding:20px 20px 22px}
+.need{padding:20px}
+.need h2,.lvl h2{font:900 26px/1.15 Unbounded,sans-serif;margin:0 0 10px}
+.need p{margin:0 0 10px}.need p:last-child{margin:0}
+.tag{display:inline-block;font:900 15px/1 Unbounded,sans-serif;padding:7px 12px;border:3px solid var(--ink);border-radius:12px;margin:0 0 12px;color:var(--ink)}
+.lvl p{margin:0 0 12px}
+.ex{color:var(--mute);font-size:16px}
+.how{font:800 13px/1 Onest,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin:16px 0 8px}
+.prompt{position:relative;background:#fff;border:3px solid var(--ink);border-radius:16px;padding:14px 14px 14px 16px;font-size:17px;line-height:1.45}
+.prompt q{quotes:none}
+.copy{display:block;width:100%;margin-top:12px;padding:12px;border:3px solid var(--ink);border-radius:12px;background:var(--org);color:#fff;font:800 16px/1 Onest,sans-serif;cursor:pointer;box-shadow:4px 4px 0 var(--ink)}
+.copy:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.copy.ok{background:var(--l2)}
+.note{font-size:15px;color:var(--mute);margin:12px 0 0}
+code{font:600 15px/1.4 ui-monospace,Menlo,monospace;background:#f3e9de;border-radius:6px;padding:1px 6px;word-break:break-all}
+.end{text-align:center;padding:22px 20px}
+.end h2{font:900 24px/1.2 Unbounded,sans-serif;margin:0 0 10px}
+.btn{display:inline-block;margin-top:6px;padding:14px 22px;border:3px solid var(--ink);border-radius:14px;background:var(--ink);color:#fff;text-decoration:none;font:800 17px/1 Onest,sans-serif}
+footer{text-align:center;color:var(--mute);font-size:14px}
+footer a{color:var(--mute)}
+</style>
+</head>
+<body>
+<main>
+  <div class="brand">BRODSKY.INFO · инструкция</div>
+  <h1>У Claude <em>выросли глаза</em></h1>
+  <p class="lead">Бесплатный скилл Watch учит Claude смотреть видео: кадры, звук, каждое слово. Созвон на два часа — разбор за пару минут. Ниже — как поставить за минуту и три готовые фразы.</p>
+
+  <section class="card need">
+    <h2>Что понадобится</h2>
+    <p><b>Claude Code</b> — в приложении Claude это вкладка <b>Code</b>, или в терминале. Нужна подписка Claude Pro или выше. В обычном чате Claude и в Cowork скилл Watch не работает.</p>
+    <p><b>Пара бесплатных программ.</b> Watch режет видео на кадры и достаёт звук с помощью Python, FFmpeg и yt-dlp. Ставить их руками не нужно — Claude поставит сам по фразе ниже.</p>
+    <p><b>Доступ из России.</b> Claude официально не работает в России. Если он у тебя не открывается, подключи BrodSky: сервис, через который Claude открывается и работает из России. 👉 <a href="https://t.me/Brodsky_vpn_bot">@Brodsky_vpn_bot</a></p>
+  </section>
+  <article class="card lvl"><img src="video.jpg" alt="Claude смотрит видео"><div class="body">
+    <span class="tag" style="background:var(--l1)">1</span>
+    <h2>Поставить Watch</h2>
+    <p>Watch — бесплатный открытый скилл. Даёшь ссылку или файл — он разбирает видео на кадры с таймкодами и расшифровку речи, и Claude смотрит запись целиком: что на экране, что говорят и когда.</p>
+    <p class="ex">В приложении Claude: <b>Customize → Plugins → Add → Add marketplace → Add from a repository</b>, вставь <code>https://github.com/bradautomates/claude-video</code>, нажми Sync и поставь <b>Watch</b>.<br>В терминале: <code>/plugin marketplace add bradautomates/claude-video</code>, затем <code>/plugin install watch@claude-video</code>.</p>
+    <div class="how">Скопируй и отправь в Claude Code</div>
+    <div class="prompt"><q>Поставь мне скилл Watch: /plugin marketplace add bradautomates/claude-video, затем /plugin install watch@claude-video. Проверь, что у меня есть Python 3.10+, FFmpeg и свежий yt-dlp, и поставь недостающее сам. Потом подскажи, как бесплатно получить ключ Google AI Studio (GEMINI_API_KEY), чтобы видео разбиралось быстрее.</q></div>
+    <button class="copy">Скопировать фразу</button>
+    <p class="note">Без ключа тоже работает — локально, на твоём компьютере. С бесплатным ключом Gemini быстрее, но твои файлы ненадолго загружаются в Google (потом удаляются). Для приватных записей проси «локальным движком».</p>
+  </div></article>
+  <article class="card lvl"><img src="razbor.jpg" alt="Разбор созвона"><div class="body">
+    <span class="tag" style="background:var(--l2)">2</span>
+    <h2>Разбор созвона или вебинара</h2>
+    <p>Двухчасовой созвон за пару минут: главная мысль, выводы и что делать дальше — с таймкодами, чтобы сразу перемотать к нужному месту.</p>
+    <div class="how">Скопируй и отправь в Claude Code</div>
+    <div class="prompt"><q>Посмотри через Watch видео [ссылка или путь к файлу]. Дай: главную мысль в одном предложении, три вывода с таймкодами и что мне сделать завтра — списком.</q></div>
+    <button class="copy">Скопировать фразу</button>
+  </div></article>
+  <article class="card lvl"><img src="skuchno.jpg" alt="Разнос твоего ролика"><div class="body">
+    <span class="tag" style="background:var(--l7)">3</span>
+    <h2>Честный разнос твоего ролика</h2>
+    <p>Claude видит кадры и слышит звук, поэтому может сказать то, что не скажут друзья: где скучно, где провис монтаж и где ты мямлишь.</p>
+    <div class="how">Скопируй и отправь в Claude Code</div>
+    <div class="prompt"><q>Посмотри через Watch мой ролик [ссылка или путь к файлу]. Честно, без комплиментов: где зритель заскучает и уйдёт, где провисает монтаж, где я говорю неуверенно. Для каждого места — таймкод и как исправить.</q></div>
+    <button class="copy">Скопировать фразу</button>
+  </div></article>
+  <article class="card lvl"><img src="watch.jpg" alt="Ролики конкурентов"><div class="body">
+    <span class="tag" style="background:var(--l3)">4</span>
+    <h2>Ролики конкурентов</h2>
+    <p>Не сидишь вечер с попкорном: кидаешь ссылки и получаешь, почему у них заходит.</p>
+    <div class="how">Скопируй и отправь в Claude Code</div>
+    <div class="prompt"><q>Посмотри через Watch эти ролики: [ссылки]. Для каждого: какой хук в первые 3 секунды, как устроен сюжет, какой призыв в конце. В конце — что из этого я могу взять себе.</q></div>
+    <button class="copy">Скопировать фразу</button>
+    <p class="note">YouTube-ссылки работают сразу. Для других сайтов и закрытых видео проще скачать файл и дать Claude путь к нему.</p>
+  </div></article>
+
+  <section class="card end">
+    <h2>Сэкономил вечер?</h2>
+    <p>Перешли эту страницу тому, кто до сих пор смотрит созвоны на ×2.</p>
+    <a class="btn" href="https://t.me/BrodskyINFO">Канал @BrodskyINFO</a>
+  </section>
+
+  <footer>BRODSKY.INFO · <a href="https://t.me/BrodskyINFO">t.me/BrodskyINFO</a></footer>
+</main>
+<script>
+document.querySelectorAll('.copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var q = b.previousElementSibling.textContent.trim();
+    var done = function () { b.textContent = 'Скопировано ✓'; b.classList.add('ok'); setTimeout(function () { b.textContent = 'Скопировать фразу'; b.classList.remove('ok'); }, 1800); };
+    if (navigator.clipboard) navigator.clipboard.writeText(q).then(done, function () { fallback(q); done(); });
+    else { fallback(q); done(); }
+  });
+});
+function fallback(text) {
+  var t = document.createElement('textarea'); t.value = text; t.style.position = 'fixed'; t.style.opacity = '0';
+  document.body.appendChild(t); t.select(); try { document.execCommand('copy'); } catch (e) {} document.body.removeChild(t);
+}
+</script>
+</body>
+</html>

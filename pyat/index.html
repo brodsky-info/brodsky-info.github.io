@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>5 бесплатных плагинов для Claude Code</title>
+<meta name="description" content="Remotion, Figma, Claude-Mem, Frontend Design и Claude Code Setup: что умеют и как поставить одной фразой.">
+<meta property="og:title" content="5 бесплатных плагинов для Claude Code">
+<meta property="og:description" content="Remotion, Figma, Claude-Mem, Frontend Design и Claude Code Setup: что умеют и как поставить одной фразой.">
+<meta property="og:image" content="https://brodsky-info.github.io/pyat/frontend.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;600;800&family=Unbounded:wght@800;900&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1d1a17;--cream:#fff4ea;--paper:#fffaf4;--mute:#7d746a;--org:#d97757;--line:#e6d9ca;
+  --l1:#5aa9ff;--l2:#4ec27a;--l3:#f5c84b;--l4:#b18cff;--l5:#ff9b6b;--l6:#7ee0d0;--l7:#ff5a5a}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--cream);color:var(--ink);font:400 18px/1.55 Onest,-apple-system,system-ui,sans-serif;
+  background-image:radial-gradient(rgba(29,26,23,.07) 2px,transparent 2px);background-size:34px 34px}
+main{max-width:680px;margin:0 auto;padding:28px 16px 64px}
+.brand{font:800 14px/1 Onest,sans-serif;letter-spacing:.12em;color:var(--mute);text-transform:uppercase}
+h1{font:900 clamp(34px,8.5vw,52px)/1.05 Unbounded,sans-serif;margin:14px 0 14px;letter-spacing:-.01em}
+h1 em{font-style:normal;color:var(--org)}
+.lead{font-size:20px;margin:0 0 22px}
+.ladder{display:flex;gap:6px;margin:0 0 26px}
+.ladder i{flex:1;height:14px;border-radius:7px;border:3px solid var(--ink)}
+.card{background:var(--paper);border:4px solid var(--ink);border-radius:26px;box-shadow:7px 7px 0 var(--ink);overflow:hidden;margin:0 0 30px}
+.card img{display:block;width:100%;height:auto;border-bottom:4px solid var(--ink);background:#f3e9de}
+.body{padding:20px 20px 22px}
+.need{padding:20px}
+.need h2,.lvl h2{font:900 26px/1.15 Unbounded,sans-serif;margin:0 0 10px}
+.need p{margin:0 0 10px}.need p:last-child{margin:0}
+.tag{display:inline-block;font:900 15px/1 Unbounded,sans-serif;padding:7px 12px;border:3px solid var(--ink);border-radius:12px;margin:0 0 12px;color:var(--ink)}
+.lvl p{margin:0 0 12px}
+.ex{color:var(--mute);font-size:16px}
+.how{font:800 13px/1 Onest,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin:16px 0 8px}
+.prompt{position:relative;background:#fff;border:3px solid var(--ink);border-radius:16px;padding:14px 14px 14px 16px;font-size:17px;line-height:1.45}
+.prompt q{quotes:none}
+.copy{display:block;width:100%;margin-top:12px;padding:12px;border:3px solid var(--ink);border-radius:12px;background:var(--org);color:#fff;font:800 16px/1 Onest,sans-serif;cursor:pointer;box-shadow:4px 4px 0 var(--ink)}
+.copy:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.copy.ok{background:var(--l2)}
+.note{font-size:15px;color:var(--mute);margin:12px 0 0}
+code{font:600 15px/1.4 ui-monospace,Menlo,monospace;background:#f3e9de;border-radius:6px;padding:1px 6px;word-break:break-all}
+.end{text-align:center;padding:22px 20px}
+.end h2{font:900 24px/1.2 Unbounded,sans-serif;margin:0 0 10px}
+.btn{display:inline-block;margin-top:6px;padding:14px 22px;border:3px solid var(--ink);border-radius:14px;background:var(--ink);color:#fff;text-decoration:none;font:800 17px/1 Onest,sans-serif}
+footer{text-align:center;color:var(--mute);font-size:14px}
+footer a{color:var(--mute)}
+</style>
+</head>
+<body>
+<main>
+  <div class="brand">BRODSKY.INFO · инструкция</div>
+  <h1>Claude Code без плагинов — <em>как айфон без приложений</em></h1>
+  <p class="lead">Пять бесплатных плагинов, после которых Claude Code монтирует ролики, собирает макеты в Figma, помнит твои проекты и делает сайты, как дизайнер. Под каждым — фраза: отправляешь в Claude Code, он ставит сам.</p>
+
+  <section class="card need">
+    <h2>Что понадобится</h2>
+    <p><b>Claude Code</b> — версия Claude, которая работает с файлами и программами на твоём компьютере: в приложении Claude это вкладка <b>Code</b>, или в терминале. Нужна подписка Claude Pro или выше. В обычном чате Claude плагины не работают.</p>
+    <p><b>Ставить можно фразой.</b> Под каждым плагином — готовая фраза: копируешь, отправляешь в Claude Code, он ставит сам. Если хочешь руками — команды в серых плашках. После установки перезапусти Claude Code.</p>
+    <p><b>Доступ из России.</b> Claude официально не работает в России. Если он у тебя не открывается, подключи BrodSky: сервис, через который Claude открывается и работает из России. 👉 <a href="https://t.me/Brodsky_vpn_bot">@Brodsky_vpn_bot</a></p>
+  </section>
+  <article class="card lvl"><img src="remotion.jpg" alt="Remotion: Claude монтирует ролик"><div class="body">
+    <span class="tag" style="background:var(--l1)">1</span>
+    <h2>Remotion — Claude монтирует ролики</h2>
+    <p>Набор навыков от создателей Remotion. Claude собирает видео кодом: субтитры по словам, анимация, переходы, даже 3D. Ролик, по которому ты сюда пришёл, собран именно так.</p>
+    <p class="ex">Руками: <code>npx skills add remotion-dev/skills</code> (нужен Node.js).</p>
+    <div class="how">Скопируй и отправь в Claude Code</div>
+    <div class="prompt"><q>Поставь мне навыки Remotion для Claude Code: выполни npx skills add remotion-dev/skills. Если нет Node.js — сначала поставь его. Потом сделай пробный ролик на 10 секунд: белый фон и моё имя крупно с анимацией появления.</q></div>
+    <button class="copy">Скопировать фразу</button>
+  </div></article>
+  <article class="card lvl"><img src="figma.jpg" alt="Figma: макет карусели"><div class="body">
+    <span class="tag" style="background:var(--l4)">2</span>
+    <h2>Figma — макеты прямо в фигме</h2>
+    <p>Официальный плагин Figma. Просишь карусель для инсты или макет сайта — Claude собирает его прямо в твоём файле Figma, слоями. Каждую надпись и картинку потом можно поправить руками.</p>
+    <p class="ex">Руками: <code>/plugin install figma@claude-plugins-official</code>, потом в <code>/plugin</code> → Installed → Figma разреши доступ в браузере. Нужен аккаунт Figma.</p>
+    <div class="how">Скопируй и отправь в Claude Code</div>
+    <div class="prompt"><q>Поставь официальный плагин Figma: /plugin install figma@claude-plugins-official. Потом подскажи, как подключить мой аккаунт Figma, и проверь, что ты видишь мои файлы.</q></div>
+    <button class="copy">Скопировать фразу</button>
+  </div></article>
+  <article class="card lvl"><img src="mem.jpg" alt="Claude-Mem: память между чатами"><div class="body">
+    <span class="tag" style="background:var(--l5)">3</span>
+    <h2>Claude-Mem — память между чатами</h2>
+    <p>Claude сам ведёт заметки о том, что вы делали, и в новом чате уже помнит твой проект. Больше не объясняешь всё с нуля. Память хранится у тебя на компьютере, в папке <code>~/.claude-mem</code>.</p>
+    <p class="ex">Руками: <code>/plugin marketplace add thedotmack/claude-mem</code>, затем <code>/plugin install claude-mem</code>. Нужен Node.js 20.19+ или 22.12+.</p>
+    <div class="how">Скопируй и отправь в Claude Code</div>
+    <div class="prompt"><q>Поставь плагин claude-mem: /plugin marketplace add thedotmack/claude-mem, затем /plugin install claude-mem. Проверь, что у меня подходящая версия Node.js, и выключи анонимную статистику командой npx claude-mem telemetry disable.</q></div>
+    <button class="copy">Скопировать фразу</button>
+    <p class="note">Память начинает подсказывать со второго чата в проекте: в первом Claude только записывает. Что не хочешь сохранять, оборачивай в теги &lt;private&gt;.</p>
+  </div></article>
+  <article class="card lvl"><img src="frontend.jpg" alt="Frontend Design: было и стало"><div class="body">
+    <span class="tag" style="background:var(--l2)">4</span>
+    <h2>Frontend Design — сайты без «нейросетевого» вида</h2>
+    <p>Официальный плагин Anthropic. Без него Claude делает одинаковые сайты: фиолетовый градиент, «Welcome to Our Platform». С ним — выбирает стиль, шрифты и цвета под задачу, как дизайнер. Включается сам, когда ты просишь сайт или страницу.</p>
+    <p class="ex">Руками: <code>/plugin install frontend-design@claude-plugins-official</code></p>
+    <div class="how">Скопируй и отправь в Claude Code</div>
+    <div class="prompt"><q>Поставь официальный плагин Anthropic: /plugin install frontend-design@claude-plugins-official. Потом сделай мне одностраничный сайт-визитку для [чем ты занимаешься] — со смелым, запоминающимся стилем.</q></div>
+    <button class="copy">Скопировать фразу</button>
+  </div></article>
+  <article class="card lvl"><img src="setup.jpg" alt="Claude Code Setup: чего не хватает"><div class="body">
+    <span class="tag" style="background:var(--l3)">5</span>
+    <h2>Claude Code Setup — скажет, чего тебе не хватает</h2>
+    <p>Тоже от Anthropic. Изучает твой проект и советует, что добавить: какие навыки, помощники, подключения и автоматические действия ускорят именно твою работу. Сам ничего не меняет, только советует — решаешь ты.</p>
+    <p class="ex">Руками: <code>/plugin install claude-code-setup@claude-plugins-official</code></p>
+    <div class="how">Скопируй и отправь в Claude Code</div>
+    <div class="prompt"><q>Поставь официальный плагин Anthropic: /plugin install claude-code-setup@claude-plugins-official. Потом изучи мой проект и посоветуй, какие автоматизации мне добавить — по одной-две в каждой категории, простыми словами.</q></div>
+    <button class="copy">Скопировать фразу</button>
+  </div></article>
+  <section class="card need">
+    <h2>Осторожно с чужими плагинами</h2>
+    <p>Плагин работает с теми же правами, что и Claude Code: видит файлы и переписку. Anthropic прямо пишет, что не проверяет чужие плагины. Ставь только из источников, которым доверяешь: здесь три плагина от Anthropic и Figma, Remotion — от его авторов, Claude-Mem — открытый проект с исходниками на GitHub.</p>
+    <p>Отключить или удалить плагин: <code>/plugin</code> → вкладка <b>Installed</b>.</p>
+  </section>
+
+  <section class="card end">
+    <h2>Поставил все пять?</h2>
+    <p>Перешли эту страницу тому, кто до сих пор сидит в «голом» Claude Code.</p>
+    <a class="btn" href="https://t.me/BrodskyINFO">Канал @BrodskyINFO</a>
+  </section>
+
+  <footer>BRODSKY.INFO · <a href="https://t.me/BrodskyINFO">t.me/BrodskyINFO</a></footer>
+</main>
+<script>
+document.querySelectorAll('.copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var q = b.previousElementSibling.textContent.trim();
+    var done = function () { b.textContent = 'Скопировано ✓'; b.classList.add('ok'); setTimeout(function () { b.textContent = 'Скопировать фразу'; b.classList.remove('ok'); }, 1800); };
+    if (navigator.clipboard) navigator.clipboard.writeText(q).then(done, function () { fallback(q); done(); });
+    else { fallback(q); done(); }
+  });
+});
+function fallback(text) {
+  var t = document.createElement('textarea'); t.value = text; t.style.position = 'fixed'; t.style.opacity = '0';
+  document.body.appendChild(t); t.select(); try { document.execCommand('copy'); } catch (e) {} document.body.removeChild(t);
+}
+</script>
+</body>
+</html>
