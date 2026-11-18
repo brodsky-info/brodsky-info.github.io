@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Лимиты Claude: 10 приёмов, чтобы хватало дольше</title>
+<meta name="description" content="Десять приёмов из официальной документации Claude Code: пять привычек до лимита и пять приёмов, когда он уже горит. Команды и готовые фразы.">
+<meta property="og:title" content="Лимиты Claude: 10 приёмов, чтобы хватало дольше">
+<meta property="og:description" content="Команды и готовые фразы, чтобы лимит Claude жил дольше.">
+<meta name="theme-color" content="#071322">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;600;800&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#071322;--bg2:#0c1f36;--card:#0f2640;--line:#1d3b5e;--txt:#e6eef7;--mute:#8fa6c2;--cy:#3fd6ff;--cy2:#7ff6ff;--org:#d97757;--grn:#39e08a;--red:#ff5a6a;--yel:#ffd23f}
+*{box-sizing:border-box}
+html{overflow-x:hidden;-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;color:var(--txt);font:400 18px/1.6 Onest,-apple-system,system-ui,sans-serif;
+  background:radial-gradient(900px 600px at 85% -5%,rgba(63,214,255,.16),transparent 60%),radial-gradient(700px 500px at -10% 35%,rgba(217,119,87,.10),transparent 60%),var(--bg);min-height:100vh}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(#000,transparent 85%);-webkit-mask-image:linear-gradient(#000,transparent 85%)}
+main{position:relative;max-width:680px;margin:0 auto;padding:22px 16px 80px}
+a{color:var(--cy)}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:34px}
+.brand{display:flex;align-items:center;gap:10px;font:800 16px/1 Unbounded,sans-serif;color:#fff;text-decoration:none}
+.brand img{width:44px;height:44px;border-radius:12px;border:2px solid var(--cy)}
+.brand i{font-style:normal;color:var(--cy2)}
+.chip{font:800 12px/1 Unbounded,sans-serif;letter-spacing:.06em;color:#04121f;background:var(--cy);border-radius:10px;padding:8px 11px;white-space:nowrap}
+h1{font:900 clamp(38px,10vw,62px)/1.02 Unbounded,sans-serif;margin:0 0 18px;letter-spacing:-.02em}
+h1 em{display:block;font-style:normal;color:var(--cy);text-shadow:0 0 28px rgba(63,214,255,.35)}
+.lead{font-size:20px;color:#cfdced;margin:0 0 22px}
+.facts{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 34px}
+.facts span{font:800 14px/1 Onest,sans-serif;padding:10px 14px;border-radius:999px;background:var(--bg2);border:1.5px solid var(--line)}
+.facts b{color:var(--cy)}
+.hero{position:relative;border-radius:26px;overflow:hidden;border:2px solid var(--line);box-shadow:0 30px 60px rgba(0,0,0,.45),0 0 0 6px rgba(63,214,255,.06);margin:0 0 44px}
+.hero img{display:block;width:100%;height:auto}
+.hero figcaption{position:absolute;left:14px;bottom:14px;font:800 13px/1 Unbounded,sans-serif;background:rgba(7,19,34,.82);backdrop-filter:blur(6px);color:var(--cy2);padding:9px 12px;border-radius:10px;border:1px solid var(--line)}
+h2{font:900 clamp(24px,6.4vw,32px)/1.12 Unbounded,sans-serif;margin:0 0 14px;letter-spacing:-.01em}
+h2 em{font-style:normal;color:var(--cy)}
+section{margin:0 0 48px}
+.kicker{font:800 12px/1 Unbounded,sans-serif;letter-spacing:.12em;color:var(--mute);text-transform:uppercase;margin:0 0 12px}
+/* против */
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.side{border-radius:20px;padding:18px 16px;border:1.5px solid var(--line);background:var(--card)}
+.side h3{font:800 15px/1.2 Unbounded,sans-serif;margin:0 0 12px}
+.side.bad h3{color:var(--red)}.side.good{border-color:rgba(63,214,255,.55);box-shadow:0 0 30px rgba(63,214,255,.12) inset}.side.good h3{color:var(--cy)}
+.side ul{list-style:none;margin:0;padding:0;font-size:15.5px;line-height:1.45}
+.side li{padding:7px 0 7px 26px;position:relative;border-top:1px dashed rgba(143,166,194,.18)}
+.side li:first-child{border-top:0}
+.side.bad li:before{content:"✕";position:absolute;left:2px;color:var(--red);font-weight:800}
+.side.good li:before{content:"✓";position:absolute;left:2px;color:var(--grn);font-weight:800}
+/* шаги */
+.steps{position:relative;margin:0;padding:0;list-style:none;counter-reset:s}
+.steps:before{content:"";position:absolute;left:21px;top:10px;bottom:10px;width:2px;background:linear-gradient(var(--cy),rgba(63,214,255,.1))}
+.steps li{position:relative;padding:0 0 22px 62px;counter-increment:s}
+.steps li:before{content:counter(s);position:absolute;left:0;top:-2px;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font:900 18px/1 Unbounded,sans-serif;color:#04121f;background:var(--cy);box-shadow:0 0 22px rgba(63,214,255,.45)}
+.steps b{font:800 19px/1.3 Onest,sans-serif;color:#fff}
+.steps p{margin:4px 0 0;color:var(--mute);font-size:16px}
+.ui{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:6px 0 0}
+.ui span{font:700 14px/1 Onest,sans-serif;background:#13304f;border:1px solid var(--line);border-radius:9px;padding:8px 10px}
+.ui i{font-style:normal;color:var(--mute)}
+.ui .go{background:var(--grn);color:#04121f;border-color:var(--grn);font-weight:800}
+.shot{border-radius:22px;overflow:hidden;border:2px solid var(--line);margin:22px 0 0}
+.shot img{display:block;width:100%;height:auto}
+/* фразы */
+.card{border-radius:24px;background:linear-gradient(180deg,var(--card),#0b1d33);border:1.5px solid var(--line);overflow:hidden;margin:0 0 18px}
+.card img{display:block;width:100%;height:auto;border-bottom:1.5px solid var(--line)}
+.card .in{padding:20px 18px 20px}
+.card .num{display:inline-block;font:900 13px/1 Unbounded,sans-serif;color:#04121f;background:var(--cy);border-radius:9px;padding:7px 10px;margin:0 0 12px}
+.card h3{font:900 21px/1.2 Unbounded,sans-serif;margin:0 0 8px}
+.card p{margin:0 0 14px;color:#cfdced;font-size:16.5px}
+.prompt{position:relative;background:#06111f;border:1.5px dashed rgba(63,214,255,.5);border-radius:16px;padding:16px 16px 16px 18px;font:600 16.5px/1.5 Onest,sans-serif;color:#e9f6ff}
+.prompt q{quotes:none}
+.prompt mark{background:rgba(255,210,63,.18);color:var(--yel);border-radius:5px;padding:0 4px}
+.copy{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:12px;padding:15px;border:0;border-radius:14px;background:var(--cy);color:#04121f;font:800 16px/1 Unbounded,sans-serif;cursor:pointer;box-shadow:0 8px 24px rgba(63,214,255,.25);transition:transform .12s ease,background .2s}
+.copy:active{transform:scale(.98)}
+.copy.ok{background:var(--grn)}
+/* важно */
+.note{display:flex;gap:14px;align-items:flex-start;border-radius:20px;padding:18px;background:rgba(255,210,63,.07);border:1.5px solid rgba(255,210,63,.35);font-size:16px;color:#e9e1c4}
+.note .ic{font-size:26px;line-height:1}
+.access{border-radius:20px;padding:18px;background:var(--card);border:1.5px solid var(--line);font-size:16px;color:#cfdced}
+.access b{color:#fff}
+/* финал */
+.end{text-align:center;border-radius:26px;padding:30px 20px;background:radial-gradient(500px 220px at 50% 0,rgba(63,214,255,.22),transparent 70%),var(--card);border:1.5px solid rgba(63,214,255,.45)}
+.end h2{margin-bottom:8px}
+.end p{color:#cfdced;margin:0 0 18px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 22px;border-radius:16px;background:#fff;color:#04121f;text-decoration:none;font:800 16px/1 Unbounded,sans-serif}
+.btn img{width:26px;height:26px;border-radius:7px}
+footer{text-align:center;color:var(--mute);font-size:14px;margin-top:30px}
+footer a{color:var(--mute)}
+code{font:600 14px/1.4 ui-monospace,Menlo,monospace;background:#13304f;border-radius:6px;padding:1px 6px;color:var(--cy2)}
+@media (min-width:600px){.side{padding:22px 20px}.card .in{padding:24px}}
+@media (max-width:380px){.vs{grid-template-columns:1fr}}
+.rise{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
+.rise.on{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rise{opacity:1;transform:none;transition:none}}
+
+h1{font-size:clamp(30px,8.2vw,56px)}
+.how{list-style:none;margin:0 0 14px;padding:0}.how li{padding:10px 0;border-top:1px dashed rgba(143,166,194,.2);font-size:16.5px}.how li:first-child{border-top:0}.how b{color:#fff}
+.tag{display:inline-block;font:800 12px/1 Unbounded,sans-serif;letter-spacing:.06em;border-radius:8px;padding:6px 9px;margin:0 0 10px;background:var(--org);color:#fff}
+.sub3{font:800 18px/1.3 Onest,sans-serif;color:#fff;margin:22px 0 8px}
+pre.code{background:#06111f;border:1.5px solid var(--line);border-radius:14px;padding:14px;overflow-x:auto;font:600 14px/1.5 ui-monospace,Menlo,monospace;color:var(--cy2);margin:8px 0 6px;-webkit-overflow-scrolling:touch}
+.prompt{margin-top:8px}
+.warn{display:flex;gap:14px;align-items:flex-start;border-radius:20px;padding:18px;background:rgba(255,90,106,.08);border:1.5px solid rgba(255,90,106,.4);font-size:16px;color:#f3d6da;margin:0 0 14px}
+.warn .ic{font-size:26px;line-height:1}
+.links{list-style:none;margin:0;padding:0}.links li{padding:11px 0;border-top:1px dashed rgba(143,166,194,.2);font-size:16px;word-break:break-word}.links li:first-child{border-top:0}.links span{display:block;color:var(--mute);font-size:14px}
+details.os{background:#0b1d33;border:1.5px solid var(--line);border-radius:14px;padding:4px 14px;margin:10px 0 0}details.os summary{cursor:pointer;font:800 15px/1 Unbounded,sans-serif;color:var(--cy);padding:12px 0}details.os[open] summary{margin-bottom:2px}
+.prompt{overflow-wrap:anywhere}.steps li{min-width:0}.steps{overflow-x:clip}
+.flag{font-size:14px;color:var(--mute);margin:8px 0 0}
+
+.toc{display:grid;gap:10px;margin:0 0 22px}
+.toc a{display:grid;grid-template-columns:44px 1fr;grid-template-rows:auto auto;column-gap:14px;align-items:center;padding:12px 14px;border-radius:18px;background:var(--card);border:1.5px solid var(--line);text-decoration:none;color:#fff;font:800 17px/1.2 Onest,sans-serif}
+.toc a b{grid-row:1/3;width:44px;height:44px;border-radius:13px;display:grid;place-items:center;background:var(--cy);color:#04121f;font:900 18px/1 Unbounded,sans-serif}
+.toc a span{color:var(--mute);font:400 14.5px/1.3 Onest,sans-serif}
+.prog{scroll-margin-top:16px;padding-top:6px;border-top:1.5px solid var(--line)}
+.prog .kicker{margin-top:28px}
+.plat{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.plat span{font:700 13.5px/1 Onest,sans-serif;padding:8px 11px;border-radius:999px;background:#13304f;border:1px solid var(--line);color:var(--cy2)}
+.after{font-size:16.5px;color:#cfdced;margin:16px 0 6px}.after b{color:#fff}
+details.os summary{cursor:pointer;font:800 16px/1 Onest,sans-serif;padding:12px 0;color:#fff}
+details.os p{font-size:16px;color:#cfdced;margin:4px 0 10px}
+.prog .warn{margin-top:16px}
+.prog .access{margin:0 0 14px}
+.src{display:inline-block;font:700 15px/1.3 Onest,sans-serif;word-break:break-all;padding:10px 14px;border-radius:12px;border:1.5px solid rgba(63,214,255,.45);text-decoration:none}
+.src:before{content:"↗ ";}
+</style>
+</head>
+<body>
+<main>
+  <div class="top">
+    <a class="brand" href="https://t.me/BrodskyINFO"><img src="../pubmed/logo.png" alt=""><span>Brodsky<i>.info</i></span></a>
+    <span class="chip">ГАЙД</span>
+  </div>
+  <h1>Лимит Claude кончается к обеду?<em>10 приёмов, чтобы хватало дольше</em></h1>
+  <p class="lead">Claude Code отправляет весь разговор с каждым твоим сообщением, поэтому лимит горит быстрее, чем кажется. Ниже пять привычек, которые берегут его заранее, и пять приёмов на случай, когда он уже горит. Всё из официальной документации Claude Code, с командами.</p>
+  <div class="facts"><span><b>10</b> приёмов</span><span>из официальной <b>документации</b></span><span>Claude Code</span></div>
+
+  <nav class="toc rise">
+    <a href="#clear"><b>1</b>/clear<span>новая задача — новый чат</span></a>
+    <a href="#model"><b>2</b>/model<span>дорогая модель — только для сложного</span></a>
+    <a href="#mcp"><b>3</b>/mcp<span>выключи лишние подключения</span></a>
+    <a href="#concrete"><b>4</b>Конкретный запрос<span>как мастеру, а не «сделай красиво»</span></a>
+    <a href="#usage"><b>5</b>/usage<span>смотри, куда уходит лимит</span></a>
+    <a href="#esc"><b>6</b>Escape и /rewind<span>останови сразу, если пошёл не туда</span></a>
+    <a href="#plan"><b>7</b>Режим плана<span>сначала маршрут, потом дорога</span></a>
+    <a href="#effort"><b>8</b>/effort<span>не думай изо всех сил над простым</span></a>
+    <a href="#sub"><b>9</b>Помощник-субагент<span>шумную работу — в сторону</span></a>
+    <a href="#wait"><b>10</b>Ожидание сброса<span>упёрся — пусть Claude подождёт сам</span></a>
+    
+  </nav>
+
+  <div class="note rise" style="margin:0 0 20px"><span class="ic">🔋</span><div><b>Главная идея.</b> Чем длиннее разговор, тем дороже каждое твоё «ок». Почти все приёмы про одно: держи разговор коротким, а тяжёлую работу отдавай помощникам.</div></div>
+
+  <div class="access rise" style="margin:0 0 44px"><b>Доступ из России.</b> Claude официально не работает в России. Если он у тебя не открывается, подключи BrodSky: сервис, через который Claude открывается и работает из России. 👉 <a href="https://t.me/Brodsky_vpn_bot">@Brodsky_vpn_bot</a></div>
+
+  <div class="kicker" style="margin:0 0 6px">Часть 1</div>
+  <h2 class="rise" style="margin:0 0 22px">Пять привычек <em>до лимита</em></h2>
+  <section class="rise prog" id="clear">
+    <div class="kicker">Привычка 1</div>
+    <h2>/clear: <em>новая задача — новый чат</em></h2>
+    <ul class="how">
+      <li><b>Когда нужно.</b> Сел за другое дело, а чат остался от прошлого.</li>
+      <li><b>Что делает.</b> Очищает разговор. Claude отправляет весь чат с каждым твоим сообщением, поэтому старый хлам тратит лимит снова и снова.</li>
+      <li><b>Что получишь.</b> Каждое следующее сообщение дешевле.</li>
+    </ul>
+    <div class="sub3">Команда или фраза</div>
+    <div class="prompt"><q>/clear</q></div>
+    <button class="copy">Скопировать</button>
+    <div class="warn"><span class="ic">⚠️</span><div><b>Важно.</b> Перед очисткой можно дать чату имя командой /rename, а потом вернуться к нему через /resume.</div></div>
+  </section>
+
+  <section class="rise prog" id="model">
+    <div class="kicker">Привычка 2</div>
+    <h2>/model: <em>дорогая модель — только для сложного</em></h2>
+    <ul class="how">
+      <li><b>Когда нужно.</b> Просишь самую умную модель сделать простую работу.</li>
+      <li><b>Что делает.</b> Переключает модель. Sonnet справляется с большей частью обычных задач и расходует лимит медленнее, Opus оставь для сложных решений.</li>
+      <li><b>Что получишь.</b> Лимит тратится на то, что действительно требует ума.</li>
+    </ul>
+    <div class="sub3">Команда или фраза</div>
+    <div class="prompt"><q>/model</q></div>
+    <button class="copy">Скопировать</button>
+    <div class="warn"><span class="ic">⚠️</span><div><b>Важно.</b> Простым помощникам-субагентам можно задать model: haiku в их настройках.</div></div>
+  </section>
+
+  <section class="rise prog" id="mcp">
+    <div class="kicker">Привычка 3</div>
+    <h2>/mcp: <em>выключи лишние подключения</em></h2>
+    <ul class="how">
+      <li><b>Когда нужно.</b> Подключил кучу сервисов и давно ими не пользуешься.</li>
+      <li><b>Что делает.</b> Показывает подключённые серверы. Лишние можно выключить, команда /context покажет, что занимает место в разговоре.</li>
+      <li><b>Что получишь.</b> Меньше мусора в контексте.</li>
+    </ul>
+    <div class="sub3">Команда или фраза</div>
+    <div class="prompt"><q>/mcp</q></div>
+    <button class="copy">Скопировать</button>
+  </section>
+
+  <section class="rise prog" id="concrete">
+    <div class="kicker">Привычка 4</div>
+    <h2>Конкретный запрос: <em>как мастеру, а не «сделай красиво»</em></h2>
+    <ul class="how">
+      <li><b>Когда нужно.</b> Пишешь «улучши весь проект» и удивляешься, что Claude читает сотню файлов.</li>
+      <li><b>Что делает.</b> Конкретная просьба заставляет открыть один-два файла вместо обзора всего проекта.</li>
+      <li><b>Что получишь.</b> Меньше чтения — меньше лимита.</li>
+    </ul>
+    <div class="sub3">Команда или фраза</div>
+    <div class="prompt"><q>Поменяй цвет кнопки «Купить» в файле shop.html на зелёный. Больше ничего не трогай.</q></div>
+    <button class="copy">Скопировать</button>
+    <div class="warn"><span class="ic">⚠️</span><div><b>Важно.</b> Хорошая просьба называет файл, действие и границу: что не трогать.</div></div>
+  </section>
+
+  <section class="rise prog" id="usage">
+    <div class="kicker">Привычка 5</div>
+    <h2>/usage: <em>смотри, куда уходит лимит</em></h2>
+    <ul class="how">
+      <li><b>Когда нужно.</b> Лимит сгорает, а куда — непонятно.</li>
+      <li><b>Что делает.</b> Показывает расход и, на подписке Pro и выше, разбивку: какие навыки, помощники и подключения тратят больше всего, и подсказывает, что поменять.</li>
+      <li><b>Что получишь.</b> Видишь реальную причину, а не гадаешь.</li>
+    </ul>
+    <div class="sub3">Команда или фраза</div>
+    <div class="prompt"><q>/usage</q></div>
+    <button class="copy">Скопировать</button>
+    <div class="warn"><span class="ic">⚠️</span><div><b>Важно.</b> Подсказки в /usage считаются по твоей истории на этом компьютере, другие устройства не учитываются.</div></div>
+  </section>
+
+  <div class="kicker" style="margin:0 0 6px">Часть 2</div>
+  <h2 class="rise" style="margin:0 0 22px">Пять приёмов, <em>когда уже горит</em></h2>
+  <section class="rise prog" id="esc">
+    <div class="kicker">Приём 6</div>
+    <h2>Escape и /rewind: <em>останови сразу, если пошёл не туда</em></h2>
+    <ul class="how">
+      <li><b>Когда нужно.</b> Claude пошёл в неверную сторону, а ты ждёшь, пока он закончит.</li>
+      <li><b>Что делает.</b> Escape останавливает ход сразу. Команда /rewind возвращает разговор и код к прошлой точке.</li>
+      <li><b>Что получишь.</b> Лимит не тратится на заведомо ненужную работу.</li>
+    </ul>
+    <div class="sub3">Команда или фраза</div>
+    <div class="prompt"><q>/rewind</q></div>
+    <button class="copy">Скопировать</button>
+  </section>
+
+  <section class="rise prog" id="plan">
+    <div class="kicker">Приём 7</div>
+    <h2>Режим плана: <em>сначала маршрут, потом дорога</em></h2>
+    <ul class="how">
+      <li><b>Когда нужно.</b> Большая задача, и Claude с ходу начинает переписывать.</li>
+      <li><b>Что делает.</b> Нажми Shift+Tab, чтобы включить режим плана: Claude изучит проект и предложит подход, а ты одобришь его до правок.</li>
+      <li><b>Что получишь.</b> Не переделываешь работу, сделанную не в ту сторону.</li>
+    </ul>
+    <div class="sub3">Команда или фраза</div>
+    <div class="prompt"><q>Сначала предложи план, ничего не меняй, пока я не одобрю.</q></div>
+    <button class="copy">Скопировать</button>
+  </section>
+
+  <section class="rise prog" id="effort">
+    <div class="kicker">Приём 8</div>
+    <h2>/effort: <em>не думай изо всех сил над простым</em></h2>
+    <ul class="how">
+      <li><b>Когда нужно.</b> Для простой правки Claude размышляет, как над диссертацией.</li>
+      <li><b>Что делает.</b> Снижает уровень размышления. Размышления тоже считаются в лимит.</li>
+      <li><b>Что получишь.</b> Простые задачи дешевле.</li>
+    </ul>
+    <div class="sub3">Команда или фраза</div>
+    <div class="prompt"><q>/effort</q></div>
+    <button class="copy">Скопировать</button>
+  </section>
+
+  <section class="rise prog" id="sub">
+    <div class="kicker">Приём 9</div>
+    <h2>Помощник-субагент: <em>шумную работу — в сторону</em></h2>
+    <ul class="how">
+      <li><b>Когда нужно.</b> Тесты, логи и документация засоряют основной разговор.</li>
+      <li><b>Что делает.</b> Помощник читает всё в своём контексте, а к тебе возвращается короткая сводка. Помощнику можно поставить модель попроще.</li>
+      <li><b>Что получишь.</b> Разговор остаётся чистым и коротким.</li>
+    </ul>
+    <div class="sub3">Команда или фраза</div>
+    <div class="prompt"><q>Запусти тесты через помощника и верни мне только короткую сводку: что упало и почему.</q></div>
+    <button class="copy">Скопировать</button>
+    <div class="warn"><span class="ic">⚠️</span><div><b>Важно.</b> Работа помощника тоже идёт из твоего лимита, поэтому не запускай их много сразу.</div></div>
+  </section>
+
+  <section class="rise prog" id="wait">
+    <div class="kicker">Приём 10</div>
+    <h2>Ожидание сброса: <em>упёрся — пусть Claude подождёт сам</em></h2>
+    <ul class="how">
+      <li><b>Когда нужно.</b> Лимит кончился на середине задачи.</li>
+      <li><b>Что делает.</b> В Claude Code версии 2.1.234 и новее можно выбрать ожидание сброса лимита: после сброса Claude сам продолжит прерванную задачу.</li>
+      <li><b>Что получишь.</b> Не сидишь над плашкой и не жмёшь «ещё раз».</li>
+    </ul>
+    <div class="sub3">Команда или фраза</div>
+    <div class="prompt"><q>/rate-limit-options</q></div>
+    <button class="copy">Скопировать</button>
+    <div class="warn"><span class="ic">⚠️</span><div><b>Важно.</b> Нужна подписка Claude, у которой есть окно лимита. Подробности в разделе interactive-mode официальной документации.</div></div>
+  </section>
+
+  <section class="rise">
+    <div class="kicker">Ещё два</div>
+    <h2>Из той же <em>документации</em></h2>
+    <ul class="how">
+      <li><b>/compact.</b> Сжимает старый разговор. Можно подсказать, что сохранить: <code>/compact оставь решения и пути к файлам</code>.</li>
+      <li><b>CLAUDE.md короче 200 строк.</b> Этот файл читается в каждой сессии, а подробные инструкции удобнее вынести в навыки: они подключаются только когда нужны.</li>
+    </ul>
+    <div class="warn"><span class="ic">⚠️</span><div><b>Не обещаем цифр.</b> Сколько именно ты сэкономишь, зависит от твоих задач. Команда /usage покажет, что работает у тебя.</div></div>
+  </section>
+
+  <section class="end rise">
+    <h2>С какого приёма начнёшь?</h2>
+    <p>Новые гайды и разборы выходят в канале.</p>
+    <a class="btn" href="https://t.me/BrodskyINFO">Канал @BrodskyINFO →</a>
+  </section>
+
+  <footer>BRODSKY.INFO · <a href="https://t.me/BrodskyINFO">t.me/BrodskyINFO</a> · источник: <a href="https://code.claude.com/docs/en/costs">документация Claude Code</a></footer>
+</main>
+<script>
+document.querySelectorAll('.copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var q = b.previousElementSibling.innerText.trim();
+    var done = function () { b.textContent = 'Скопировано ✓'; b.classList.add('ok'); setTimeout(function () { b.textContent = 'Скопировать фразу'; b.classList.remove('ok'); }, 1800); };
+    if (navigator.clipboard) navigator.clipboard.writeText(q).then(done, function () { fallback(q); done(); });
+    else { fallback(q); done(); }
+  });
+});
+function fallback(text) {
+  var t = document.createElement('textarea'); t.value = text; t.style.position = 'fixed'; t.style.opacity = '0';
+  document.body.appendChild(t); t.select(); try { document.execCommand('copy'); } catch (e) {} document.body.removeChild(t);
+}
+var io = 'IntersectionObserver' in window ? new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } }); }, {threshold: .12}) : null;
+document.querySelectorAll('.rise').forEach(function (el) { io ? io.observe(el) : el.classList.add('on'); });
+</script>
+</body>
+</html>
